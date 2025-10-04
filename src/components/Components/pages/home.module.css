@@ -1,0 +1,154 @@
+/* reset عام */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* منع أي border-radius من section العام إن أحسن */
+.sectionReset { border-radius: 0 !important; }
+
+/* الحاوية الرئيسية */
+.box {
+  position: relative;
+  min-height: 85vh;          /* اضبط الارتفاع حسب حاجتك */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;          /* مهم جداً لحماية الشكل المبتكر */
+  padding: 6rem 2.5rem;
+  background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.02));
+}
+
+/* الفيديو الخلفي */
+.bgVideo {
+  position: absolute;
+  inset: 0;                  /* left:0; top:0; right:0; bottom:0; */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;         /* مهم: يغطي الخلفية بدون تشويه */
+  transform-origin: center;
+  z-index: -2;
+  opacity: 0;
+  animation: fadeInVideo 1400ms ease-out forwards;
+  will-change: opacity, transform;
+  /* شكل راديكال مبتكر عبر clip-path (آمن ومرن) */
+  clip-path: polygon(
+    0% 0%,
+    100% 5%,
+    100% 80%,
+    78% 100%,
+    30% 95%,
+    0% 70%
+  );
+}
+
+/* تدرج التعتيم فوق الفيديو لقراءة النص */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.35));
+  opacity: 0;
+  animation: overlayFade 1300ms ease-out 200ms forwards;
+  pointer-events: none;
+  /* نجعل حافتها متماشية مع الفيديو */
+  clip-path: polygon(
+    0% 0%,
+    100% 5%,
+    100% 80%,
+    78% 100%,
+    30% 95%,
+    0% 70%
+  );
+}
+
+/* عنصر ديكور خارجي (blob) لإضافة شخصية دون كسر التصميم */
+.decor {
+  position: absolute;
+  right: -8%;
+  top: 10%;
+  width: 40vw;
+  height: 60vh;
+  z-index: 0;
+  filter: blur(40px);
+  opacity: 0.5;
+  background: radial-gradient(circle at 30% 30%, rgba(120,200,255,0.12), transparent 30%),
+              radial-gradient(circle at 70% 70%, rgba(180,120,255,0.08), transparent 30%);
+  transform: rotate(-12deg);
+  pointer-events: none;
+}
+
+/* المحتوى النصي فوق الفيديو */
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  padding: 2rem;
+}
+
+/* العناوين */
+.h {
+  font-size: clamp(28px, 4vw, 64px); /* responsive */
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  text-shadow: 0 6px 20px rgba(0,0,0,0.55);
+  background: linear-gradient(90deg, #c7f9a7, #7dd3fc 60%, #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ht {
+  font-size: clamp(14px, 1.3vw, 20px);
+  line-height: 1.6;
+  max-width: 760px;
+  margin: 0.6rem auto 1.4rem auto;
+  font-weight: 400;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.45);
+  color: rgba(255,255,255,0.95);
+}
+
+/* الزر */
+.boxBtn {
+  display: inline-block;
+  padding: 12px 34px;
+  border-radius: 999px;
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(4px);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: transform .28s ease, box-shadow .28s ease, background .28s ease;
+  box-shadow: 0 8px 30px rgba(9, 9, 12, 0.25);
+}
+.boxBtn:hover {
+  transform: translateY(-4px) scale(1.02);
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 14px 40px rgba(9,9,12,0.35);
+}
+
+/* Keyframes */
+@keyframes fadeInVideo {
+  from { opacity: 0; transform: scale(1.03); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes overlayFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* استجابة */
+@media (max-width: 900px) {
+  .decor { display: none; } /* نخفف العناصر على الموبايل */
+  .bgVideo { clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+  .overlay { clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+  .box { padding: 4.5rem 1.2rem; min-height: 70vh; }
+  .h { font-size: clamp(20px, 6vw, 40px); }
+}
+@media (max-width: 480px) {
+  .box { padding: 3rem 1rem; min-height: 60vh; }
+  .h { font-size: clamp(18px, 7.5vw, 32px); }
+  .ht { font-size: 14px; padding: 0 6px; }
+}
