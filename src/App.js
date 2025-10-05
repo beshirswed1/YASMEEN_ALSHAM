@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom"; 
 import { FaShoppingCart } from 'react-icons/fa';
+import { useLocation } from 'react-router-dom';
 
 // Context للسلة
 import { CartProvider } from "./contexts/CardContext.js";
@@ -22,9 +23,22 @@ import Carousel from "./components/Carousel/Carousel.jsx";
 
 // ================== App Component ==================
 function App() {
+     
+
   return (
-    <div className="App"><BrowserRouter>
-      {/* 🌌 خلفية أنيميشن */}
+    <BrowserRouter>
+<MainApp/>
+      </BrowserRouter>
+    
+  );
+}
+function MainApp() {
+  const location = useLocation();
+  return(
+  <>
+  
+  
+        {/* 🌌 خلفية أنيميشن */}
       <div style={{ position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh", zIndex: -100 }}>
         <LiquidChrome
           baseColor={[0.2, 0.2, 0.6]}
@@ -46,11 +60,21 @@ function App() {
           items={[
             { label: "الصفحه الرئيسيه", href: "/" },
             { label: "عن الموقع", href: "/about" },
-            { label: "العروض", href: "/OffersPage" },
-            { label: "تواصل", href: "/Contact" },
+            { label: "العروض", href: "/offerspage" },
+            { label: "تواصل", href: "/contact" },
             { label: "المنتجات", href: "/products" },
-            { label: <FaShoppingCart className="m-6 text-2xl"/>, href: "/products" },
+            { label: <FaShoppingCart className="m-6 text-2xl"/>, href: "/#" },
+
           ]}
+  className="custom-nav"
+  ease="power3.inOut"
+  baseColor="#000000"
+  pillColor="#ffffff"
+  hoveredPillTextColor="#ffffff"
+  pillTextColor="#000000"
+  activeHref={location.pathname.toLowerCase()}
+
+
         />
         
       </div>
@@ -65,13 +89,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/OffersPage" element={<OffersPage />} />
+          <Route path="/offersPage" element={<OffersPage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/products" element={<ProductsPage />} />
         </Routes>
-      </BrowserRouter>
-    </div>
-  );
+  
+  
+  </>)
 }
-
 export default App;

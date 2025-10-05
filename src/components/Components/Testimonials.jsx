@@ -130,7 +130,7 @@
                             </div>
 
                             <div className="flex items-center mt-8">
-                                <img className="flex-shrink-0 object-cover rounded-full w-11 h-11" src="https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-2.png" alt="" />
+                                <img className="flex-shrink-0 object-cover rounded-full w-11 h-11" src=" https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-female.png" alt="" />
                                 <div className="ml-4">
                                     <p className="text-base font-bold text-gray-900 font-pj">احمد الشقيري</p>
                                     <p className="mt-0.5 text-sm font-pj text-gray-600">Digital Marketer</p>
@@ -178,7 +178,7 @@
                             </div>
 
                             <div className="flex items-center mt-8">
-                                <img className="flex-shrink-0 object-cover rounded-full w-11 h-11" src="https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-female.png" alt="" />
+                                <img className="flex-shrink-0 object-cover rounded-full w-11 h-11" src="https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-2.png" alt="" />
                                 <div className="ml-4">
                                     <p className="text-base font-bold text-gray-900 font-pj">عبد الرحمن ندا</p>
                                     <p className="mt-0.5 text-sm font-pj text-gray-600">CODE WAY HR</p>
