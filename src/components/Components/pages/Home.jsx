@@ -1,4 +1,4 @@
-import Carousel from '../../Carousel/Carousel'
+import Carousel from '../../Carousel/Carousel.jsx'
 import React from 'react';
 import Styles from './home.module.css'
 import sprayVideo from '../../../assets/Spray.mp4';

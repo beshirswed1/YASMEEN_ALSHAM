@@ -15,10 +15,10 @@ import LiquidChrome from "./components/Backgrounds/LiquidChrome/LiquidChrome.jsx
 import Switch from "./components/Components/Darligm.jsx";
 
 // صفحات
-import Home from "./components/Components/pages/Home";
-import About from "./components/Components/pages/About";
-import OffersPage from "./components/Components/pages/Services";
-import Contact from "./components/Components/pages/Contact";
+import Home from "./components/Components/pages/Home.jsx";
+import About from "./components/Components/pages/About.jsx";
+import OffersPage from "./components/Components/pages/Services.jsx";
+import Contact from "./components/Components/pages/Contact.jsx";
 import Carousel from "./components/Carousel/Carousel.jsx";
 
 // ================== App Component ==================

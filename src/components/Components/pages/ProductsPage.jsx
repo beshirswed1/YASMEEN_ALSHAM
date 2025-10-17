@@ -149,18 +149,27 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Stars from '../../Stars';
 import TextType from '../../TextAnimations/TextType/TextType';
-
+import Error from './Error'
 const ProductsPage = () => {
   const [data, setData] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("/products.json") // تأكد أن الملف موجود في مجلد public
-      .then((res) => setData(res.data))
-      .catch((err) => console.error("❌ خطأ في جلب البيانات:", err));
-  }, []);
-
+  const [error, setError]= useState(null)
   const [cart, setCart] = useState([]);
+  useEffect(() => {
+    
+    const fetchData= async () => {
+      try{
+        const res =await axios.get("/products.json")
+        setData(res.data)
+      }
+      catch (err) {
+        setError("error 404")
+      }
+    }
+    fetchData()
+
+  }, []);
+if (error) return <Error/>
+  
 
   const handleAddToCart = (item) => {
     setCart((prev) => [...prev, item]);
